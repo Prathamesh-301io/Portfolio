@@ -99,7 +99,6 @@ function Header() {
         </div>
       </nav>
 
-      {/* Mobile Nav Menu */}
       <div
         className={`lg:hidden fixed right-5 top-20 w-[250px] bg-[#6e6d6a] rounded-xl shadow-lg p-5 space-y-4 z-40 transition-all duration-300 ${
           showMenu

@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.theme-transition {
+    @apply transition-colors duration-300;
+}
+
+.skill-react:hover img {
+    filter: drop-shadow(0 0 5px #61dafbaa);
+}
+
+.skill-figma:hover img {
+    filter: drop-shadow(0 0 5px #F24E1E);
+}
+
+.skill-javascript:hover img {
+    filter: drop-shadow(0 0 5px #ffd600);
+}
+
+.skill-html:hover img {
+    filter: drop-shadow(0 0 5px #ea7e01);
+}
+
+.skill-css:hover img {
+    filter: drop-shadow(0 0 5px #047edb);
+}
+
+.skill-scss:hover img {
+    filter: drop-shadow(0 0 5px #cd6799);
+}
+
+.skill-bootstrap:hover img {
+    filter: drop-shadow(0 0 5px #0df001);
+}
+
+.skill-tailwind:hover img {
+    filter: drop-shadow(0 0 5px #00acc1);
+}
+
+.skill-firebase:hover img {
+    filter: drop-shadow(0 0 5px #ffa000);
+}
+
+.skill-mysql:hover img {
+    filter: drop-shadow(0 0 5px #00608c);
+}
+
+.skill-js:hover img,
+.skill-javascript:hover img {
+    filter: drop-shadow(0 0 5px #ffd600);
+}
+
+.skill-nodejs:hover img {
+    filter: drop-shadow(0 0 5px #539e43);
+}
+
+.skill-codeigniter:hover img {
+    filter: drop-shadow(0 0 5px #ee4623);
+}
+
+
+.skill-laravel:hover img {
+    filter: drop-shadow(0 0 5px #ff2d20);
+}
+
+.skill-mongodb:hover img {
+    filter: drop-shadow(0 0 5px #4db33d);
+}
+
+.skill-postman:hover img {
+    filter: drop-shadow(0 0 5px #ff6c37);
+}
+
+.skill-reactjs:hover img,
+.skill-react:hover img {
+    filter: drop-shadow(0 0 5px #61dafb);
+}
+
+.skill-github:hover img {
+    filter: drop-shadow(0 0 5px #6e5494);
+}

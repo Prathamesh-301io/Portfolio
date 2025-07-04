@@ -83,3 +83,8 @@
 .skill-github:hover img {
     filter: drop-shadow(0 0 5px #6e5494);
 }
+
+
+html {
+    scroll-behavior: smooth;
+}

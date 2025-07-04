@@ -5,7 +5,7 @@ function Experience() {
     {
       title: "Full Stack PHP Developer",
       company: "301io",
-      duration: "March 2023 - Present",
+      duration: "March 2025 - Present",
       description:
         "At 301io, I work on scalable ERP systems and web platforms using Laravel, React, and real-time technologies. I’ve implemented Firebase push notifications, WebSockets, biometric integrations, and responsive UI/UX features to deliver optimized business solutions.",
       tech: [

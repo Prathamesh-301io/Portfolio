@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch("https://formspree.io/f/xblyerab", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: new FormData(e.target),
+    });
+
+    if (response.ok) {
+      toast.success("Thanks for contacting me!");
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <section id="contact" className="py-16 scroll-mt-20">
       <h2 className="text-3xl font-bold text-center mb-12">Contact Me</h2>
@@ -24,13 +58,15 @@ function Contact() {
 
         {/* Contact Form */}
         <form
-          onSubmit={(e) => e.preventDefault()}
+          onSubmit={handleSubmit}
           className="flex flex-col gap-5 p-6 rounded-xl border dark:border-gray-600 border-gray-300 bg-white/20 dark:bg-black/20 shadow-sm backdrop-blur-md"
         >
           <input
             type="text"
             name="name"
             placeholder="Your Name"
+            value={formData.name}
+            onChange={handleChange}
             className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-500 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             required
           />
@@ -38,6 +74,8 @@ function Contact() {
             type="email"
             name="email"
             placeholder="Your Email"
+            value={formData.email}
+            onChange={handleChange}
             className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-500 bg-transparent text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             required
           />
@@ -45,6 +83,8 @@ function Contact() {
             name="message"
             rows="5"
             placeholder="Your Message"
+            value={formData.message}
+            onChange={handleChange}
             className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-500 bg-transparent text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
             required
           ></textarea>
@@ -56,6 +96,9 @@ function Contact() {
           </button>
         </form>
       </div>
+
+      {/* Toast container */}
+      <ToastContainer position="top-right" autoClose={3000} />
     </section>
   );
 }

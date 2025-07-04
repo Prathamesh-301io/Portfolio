@@ -45,7 +45,7 @@ function Projects() {
                 <div>
                   <div className="mt-1 flex gap-2 flex-wrap *:dark:bg-white/10 *:bg-black/10 *:px-3 *:py-1 *:rounded-full *:text-sm *:text-[#323232] *:dark:text-neutral-300">
                     <div>
-                      <p>CodeIgniter 4</p>
+                      <p>Laravel</p>
                     </div>
                     <div>
                       <p>JavaScript</p>

@@ -12,7 +12,9 @@ function Footer() {
             <span className="font-semibold">React.js</span> &{" "}
             <span className="font-semibold">Tailwind CSS</span>.
             <br className="hidden sm:inline" />
-            Deployed on <span className="font-semibold">Vercel</span> using{" "}
+            Deployed on <span className="font-semibold">
+              Netlify
+            </span> using{" "}
             <span className="font-semibold">Visual Studio Code</span>.
           </p>
         </div>

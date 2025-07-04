@@ -6,7 +6,10 @@ import Frontend_Projects from "./Frontend_Projects";
 
 function Homepage() {
   return (
-    <div className="md:px-40 px-5 text-left mt-6 dark:text-neutral-300 text-[#343434] font-inter">
+    <div
+      id="home"
+      className="md:px-40 px-5 text-left mt-6 dark:text-neutral-300 text-[#343434] font-inter"
+    >
       <section className="grid lg:grid-cols-2 gap-10 items-start">
         {/* Profile Intro */}
         <div>

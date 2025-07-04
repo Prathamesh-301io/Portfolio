@@ -128,10 +128,10 @@ function Header() {
             key={link.id}
             href={link.href}
             onClick={() => handleLinkClick(link.id)}
-            className={`block text-center font-medium bg-white rounded-lg py-2 transition ${
+            className={`block text-center font-semibold rounded-lg py-2 transition-colors duration-200 ${
               currentSection === link.id
-                ? "bg-[#f4b400] text-white"
-                : "text-[#323232] hover:bg-[#f4b400]"
+                ? "bg-yellow-400 text-[#1a1a1a]"
+                : "bg-white text-[#323232] hover:bg-yellow-300 hover:text-black"
             }`}
           >
             {link.name}

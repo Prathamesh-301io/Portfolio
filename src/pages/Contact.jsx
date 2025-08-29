@@ -19,19 +19,35 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("https://formspree.io/f/xblyerab", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: new FormData(e.target),
-    });
+    try {
+      const response = await fetch(
+        "https://nodemailer-34ze.onrender.com/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: "iamprathameshpatil2001@gmail.com", // or dynamic
+            subject: `New message from ${formData.name}`,
+            message: `
+            Name: ${formData.name}
+            Email: ${formData.email}
+            Message: ${formData.message}
+          `,
+          }),
+        }
+      );
 
-    if (response.ok) {
-      toast.success("Thanks for contacting me!");
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      toast.error("Something went wrong. Please try again.");
+      if (response.ok) {
+        toast.success("Thanks for contacting me!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Server error. Please try again later.");
     }
   };
 

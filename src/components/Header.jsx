@@ -11,7 +11,7 @@ const navLinks = [
   { name: "Experience", href: "#experience", id: "experience" },
   { name: "Projects", href: "#full-stak-projects", id: "full-stak-projects" },
   { name: "Frontend", href: "#frontend-projects", id: "frontend-projects" },
-  { name: "Contact", href: "#contact", id: "contact" },
+  { name: "Hire Me", href: "#contact", id: "contact" },
 ];
 
 function Header() {
@@ -19,13 +19,11 @@ function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const [currentSection, setCurrentSection] = useState("home");
 
-  // Dark mode toggle
   const handleThemeChange = () => {
     const isDark = document.documentElement.classList.toggle("dark");
     setThemeIcon(isDark);
   };
 
-  // Auto-close mobile menu on resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) setShowMenu(false);

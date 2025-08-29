@@ -8,6 +8,7 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false); // <-- add loading state
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -18,6 +19,7 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // disable button
 
     try {
       const response = await fetch(
@@ -27,15 +29,7 @@ function Contact() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            to: "iamprathameshpatil2001@gmail.com", // or dynamic
-            subject: `New message from ${formData.name}`,
-            message: `
-            Name: ${formData.name}
-            Email: ${formData.email}
-            Message: ${formData.message}
-          `,
-          }),
+          body: JSON.stringify(formData),
         }
       );
 
@@ -48,6 +42,8 @@ function Contact() {
     } catch (err) {
       console.error(err);
       toast.error("Server error. Please try again later.");
+    } finally {
+      setLoading(false); // enable button again
     }
   };
 
@@ -56,20 +52,38 @@ function Contact() {
       <h2 className="text-3xl font-bold text-center mb-12">Contact Me</h2>
 
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 px-4">
-        {/* Email Block */}
-        <div className="flex flex-col justify-center">
-          <p className="text-lg mb-4 text-center md:text-left">
+        {/* Email & Resume Block */}
+        <div className="flex flex-col justify-center gap-6">
+          <p className="text-lg text-center md:text-left">
             Feel free to reach out directly via email:
           </p>
           <a
             href="mailto:iamprathameshpatil2001@gmail.com"
-            className="inline-flex flex-wrap items-center justify-center md:justify-start gap-3 text-base sm:text-lg p-4 rounded-xl border dark:border-gray-600 border-gray-300 dark:hover:bg-[#232323] hover:bg-black/10 transition-all duration-300"
+            className="inline-flex items-center justify-center md:justify-start gap-3 text-base sm:text-lg p-4 rounded-xl border dark:border-gray-600 border-gray-300 dark:hover:bg-[#232323] hover:bg-black/10 transition-all duration-300"
           >
             <span className="break-all">iamprathameshpatil2001@gmail.com</span>
             <span className="material-symbols-outlined text-xl transition-transform duration-300 group-hover:translate-x-1">
               arrow_outward
             </span>
           </a>
+
+          {/* Resume download section */}
+          <div className="text-center md:text-left p-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl shadow-lg">
+            <p className="text-lg sm:text-xl font-semibold text-white mb-3">
+              Ready to explore my adventure in coding?
+              <span className="block text-sm font-normal mt-1">
+                Check out my resume and see what I’ve been up to!
+              </span>
+            </p>
+            <a
+              href="/resume/Prathamesh_Patil_Resume.pdf"
+              download
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-purple-700 font-bold hover:bg-gray-100 transition-all shadow-md"
+            >
+              <span>📄 Take a Peek!</span>
+              <span className="material-symbols-outlined">download</span>
+            </a>
+          </div>
         </div>
 
         {/* Contact Form */}
@@ -106,9 +120,14 @@ function Contact() {
           ></textarea>
           <button
             type="submit"
-            className="w-full sm:w-auto px-6 py-2 rounded-md bg-black text-white dark:bg-white dark:text-black font-semibold hover:scale-105 transition-transform duration-300"
+            disabled={loading} // disable while submitting
+            className={`w-full sm:w-auto px-6 py-2 rounded-md font-semibold transition-transform duration-300 ${
+              loading
+                ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                : "bg-black text-white dark:bg-white dark:text-black hover:scale-105"
+            }`}
           >
-            Submit
+            {loading ? "Sending..." : "Submit"} {/* change text */}
           </button>
         </form>
       </div>
